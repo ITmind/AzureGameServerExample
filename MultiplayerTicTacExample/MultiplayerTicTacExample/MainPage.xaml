@@ -1,0 +1,95 @@
+﻿<Page
+    x:Class="MultiplayerTicTacExample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MultiplayerTicTacExample"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="Список сетевых игр:" FontSize="24" Margin="10"/>
+            <ListView ItemsSource="{Binding GamesInfo}" Grid.Row="1" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1" Margin="5" SelectionChanged="ListView_SelectionChanged_1">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Parameters}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button x:Name="tbNewGame" Grid.Row="2" Content="Новая игра..." FontSize="24" Foreground="{StaticResource HyperlinkForegroundThemeBrush}" Margin="10" Tapped="tbNewGame_Tapped" VerticalAlignment="Top" IsEnabled="False"/>
+        </Grid>
+
+        <Border Grid.Column="1" Margin="15" BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" BorderThickness="1">
+            <Grid x:Name="gameField" >
+                <Grid.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="FontSize" Value="200"/>
+                        
+                    </Style>
+                    <Style TargetType="Border">
+                        <Setter Property="BorderBrush" Value="{StaticResource ApplicationForegroundThemeBrush}"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="Margin" Value="5"/>
+                    </Style>
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Row="0" Grid.Column="0">
+                    <TextBlock x:Name="tb0" Tapped="tb0_Tapped"/>    
+                </Border>
+
+                <Border Grid.Row="0" Grid.Column="1">
+                    <TextBlock x:Name="tb1" Tapped="tb0_Tapped"/>
+                </Border>
+
+                <Border Grid.Row="0" Grid.Column="2">
+                    <TextBlock x:Name="tb2" Tapped="tb0_Tapped"/>
+                </Border>
+
+                <Border Grid.Row="1" Grid.Column="0">
+                    <TextBlock x:Name="tb3" Tapped="tb0_Tapped"/>
+                </Border>
+
+                <Border Grid.Row="1" Grid.Column="1">
+                    <TextBlock x:Name="tb4" Tapped="tb0_Tapped"/>
+                </Border>
+
+                <Border Grid.Row="1" Grid.Column="2">
+                    <TextBlock x:Name="tb5" Tapped="tb0_Tapped"/>
+                </Border>
+
+                <Border Grid.Row="2" Grid.Column="0">
+                    <TextBlock x:Name="tb6" Tapped="tb0_Tapped"/>
+                </Border>
+
+                <Border Grid.Row="2" Grid.Column="1">
+                    <TextBlock x:Name="tb7" Tapped="tb0_Tapped"/>
+                </Border>
+
+                <Border Grid.Row="2" Grid.Column="2">
+                    <TextBlock x:Name="tb8" Tapped="tb0_Tapped"/>
+                </Border>
+            </Grid>
+        </Border>
+
+
+    </Grid>
+</Page>

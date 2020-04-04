@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="GameService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetTcpBinding_IGameService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1">
+        </msb:BinaryEncoding>
+        <wsaw:UsingAddressing>
+        </wsaw:UsingAddressing>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/GameServerWorkRole.Contract" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/GameServerWorkRole" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IGameService_Register_InputMessage">
+    <wsdl:part name="parameters" element="tns:Register" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_Register_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_CreateGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateGame" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_CreateGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_JoinGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:JoinGame" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_JoinGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:JoinGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_DeleteGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteGame" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_DeleteGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_MakeTurn_InputMessage">
+    <wsdl:part name="parameters" element="tns:MakeTurn" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_MakeTurn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MakeTurnResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_GetGames_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGames" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_GetGames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGamesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_UpdateGameList_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:UpdateGameList" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_DeliverGameMessage_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:DeliverGameMessage" />
+  </wsdl:message>
+  <wsdl:portType msc:usingSession="true" name="IGameService">
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Register">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameService/Register" message="tns:IGameService_Register_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/RegisterResponse" message="tns:IGameService_Register_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="CreateGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameService/CreateGame" message="tns:IGameService_CreateGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/CreateGameResponse" message="tns:IGameService_CreateGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="JoinGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameService/JoinGame" message="tns:IGameService_JoinGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/JoinGameResponse" message="tns:IGameService_JoinGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="DeleteGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameService/DeleteGame" message="tns:IGameService_DeleteGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/DeleteGameResponse" message="tns:IGameService_DeleteGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="MakeTurn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameService/MakeTurn" message="tns:IGameService_MakeTurn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/MakeTurnResponse" message="tns:IGameService_MakeTurn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="false" msc:isTerminating="false" name="GetGames">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameService/GetGames" message="tns:IGameService_GetGames_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/GetGamesResponse" message="tns:IGameService_GetGames_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="UpdateGameList">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/UpdateGameList" message="tns:IGameService_UpdateGameList_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="DeliverGameMessage">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/DeliverGameMessage" message="tns:IGameService_DeliverGameMessage_OutputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NetTcpBinding_IGameService" type="tns:IGameService">
+    <wsp:PolicyReference URI="#NetTcpBinding_IGameService_policy">
+    </wsp:PolicyReference>
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="Register">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/Register" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateGame">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/CreateGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JoinGame">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/JoinGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGame">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/DeleteGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeTurn">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/MakeTurn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGames">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/GetGames" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGameList">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/UpdateGameList" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeliverGameMessage">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/DeliverGameMessage" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GameService">
+    <wsdl:port name="NetTcpBinding_IGameService" binding="tns:NetTcpBinding_IGameService">
+      <soap12:address location="net.tcp://10.62.84.153:3030/GameServer" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://10.62.84.153:3030/GameServer</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

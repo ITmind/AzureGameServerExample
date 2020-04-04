@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+  **********************************************************************************************
+
+  Этот файл создан с помощью специального инструмента из файла проекта: ServiceDefinition.csdef
+
+  Изменения в этом файле могут привести к неправильной работе и будут потеряны в случае повторного создания файла.
+
+  **********************************************************************************************
+-->
+<ServiceDefinition name="GameServerWorkerRole" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2012-05.1.7">
+  <WorkerRole name="GameServerWorkRole" vmsize="Small">
+    <Imports>
+      <Import moduleName="Diagnostics" />
+    </Imports>
+    <Endpoints>
+      <InputEndpoint name="GameServer" protocol="tcp" port="3030" />
+      <InputEndpoint name="mexport" protocol="tcp" port="8001" />
+    </Endpoints>
+  </WorkerRole>
+</ServiceDefinition>
